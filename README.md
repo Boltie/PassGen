@@ -20,13 +20,13 @@ You can also execute passgen.py and provide arguments for the count, length and 
 
 # Example Terminal Commands
 The below will generate by default a single, 16-digit password utilising all character sets.\
-passgen.py
+python passgen.py
   
 The below will generate a single, 10-digit password utilising the punctuation character set.\
-passgen.py -l 10 -s 0001
+python passgen.py -l 10 -s 0001
   
 The below will generate 100, 16-digit passwords utilising the digit character set.\
-passgen.py -c 100 -s 0010
+python passgen.py -c 100 -s 0010
   
 The below will generate 10, 8-digit passwords utilising the lower and upper character sets.\
-passgen.py -c 10 -l 8 -s 1100
+python passgen.py -c 10 -l 8 -s 1100
