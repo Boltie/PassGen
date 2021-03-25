@@ -6,7 +6,7 @@ All enabled character sets are utilised at least once before being reused. If yo
 
 Characters are never repeated.
 
-You can initialise the `PassGen()` class and use the:\
+You can initialise the `PassGen()` class and use the:
 * `get_single()` method to return a single string.
 
 * `get_multiple(count=None)` method to return an array of strings. This method defaults to using the stored objects count value. If you provide a count, it will also update the objects count value.
