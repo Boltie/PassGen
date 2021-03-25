@@ -60,9 +60,9 @@ class PassGen():
 def main(args):
     pg = PassGen()
     for i in range(len(args)):
-        if args[i].startswith("-c"): pg.count = int(args[i+1])
-        elif args[i].startswith("-l"): pg.length = int(args[i+1])
-        elif args[i].startswith("-s"): pg.sets_enabled = [int(char) for char in args[i+1]]
+        if args[i] == "-c": pg.count = int(args[i+1])
+        elif args[i] == "-l": pg.length = int(args[i+1])
+        elif args[i] == "-s": pg.sets_enabled = [int(char) for char in args[i+1]]
     for i in pg.get_multiple(): print(i)
 
 if __name__ == "__main__":
