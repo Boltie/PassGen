@@ -1,24 +1,29 @@
 # PassGen
-A Python password generator class that accepts parameters for the count, length and character sets to utilise.
+A Python password generator class that accepts parameters for the count, length and character sets.
 It defaults to providing a single 16-digit string utilising the lower, upper, digit and punctuation character sets.
 
 All enabled character sets are utilised at least once before being reused.\
-For example, if you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from a single character set. It will always return a string with a lower, upper, digit and punctuation character.
+For example, if you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character.
 
 Characters are never repeated.
 
-You can initialise the `PassGen()` class and use the `get_single()` method to return a single string or `get_multiple()` method to return an array of strings based on the provided count.
+You can initialise the `PassGen()` class and use the:\
+  `get_single()` method to return a single string
+  
+  `get_multiple(count=None)` method to return an array of strings.\
+  The method defaults to using the stored objects count value.\
+  If you provide a count, it will also update the objects count value.
 
-You can also execute `passgen.py` and provide arguments for the count, length and character sets to utilise. The password strings will then be printed to the console.
+You can execute `passgen.py` and provide arguments for the count, length and character sets. The password strings will then be printed to the console/terminal.
 
-# Terminal Arguments
+# Console/Terminal Arguments
 `-c` provide an integer to denote the number of passwords you would like returned.
 
 `-l` provide an integer to denote the length of generated passwords.
 
 `-s` provide a string containing only 1's or 0's to flag which sets to utilise. Set order = lower/upper/digit/punctuation. By default, all sets are enabled (e.g. `-s 1111`).
 
-# Example Terminal Commands
+# Example Console/Terminal Commands
 The below will generate by default a single, 16-digit password utilising all character sets.\
 `python passgen.py`
   
