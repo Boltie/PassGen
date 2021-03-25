@@ -45,8 +45,9 @@ class PassGen():
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password
 
-    def get_multiple(self):
+    def get_multiple(self, count=None):
         passwords = []
+        if count: self.count = count
         for i in range(self.count):
             passwords.append(self.get_single())
             if passwords[i].startswith("Failed - "): break
