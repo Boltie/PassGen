@@ -2,7 +2,7 @@
 A Python password generator class that accepts parameters for the count, length and character sets.
 It defaults to providing a single 16-digit string utilising the lower, upper, digit and punctuation character sets.
 
-
+All enabled character sets are utilised at least once before being reused. If you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character.
 
 Characters are never repeated.
 
