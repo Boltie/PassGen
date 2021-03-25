@@ -16,10 +16,11 @@ class PassGen():
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
-        self.sets_enabled_check()
 
     def get_single(self):
-        self.sets_enabled_check()
+        while len(self.sets_enabled) != len(self.sets):
+            if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
+            else: self.sets_enabled.append(1)
         password = ""
         sets_allowed = []
         sets_required = []
@@ -38,24 +39,18 @@ class PassGen():
                 found = False
                 while not(found):
                     char_idx = random.randrange(0, self.set_lengths[charset])
-                    if not(password.endswith(self.sets[charset][char_idx])): found = True
-                password += self.sets[charset][char_idx]
-        else:
-            password = "All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
+                    next_char = self.sets[charset][char_idx]
+                    if not(password.endswith(next_char)): found = True
+                password += next_char
+        else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password
 
     def get_multiple(self):
-        self.sets_enabled_check()
         passwords = []
-        if self.sets_enabled[:len(self.sets)].count(1) > 0:
-            for i in range(0, self.count): passwords.append(self.get_single())
-        else: passwords.append("All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled))
+        for i in range(self.count):
+            passwords.append(self.get_single())
+            if passwords[i].startswith("Failed - "): break
         return passwords
-
-    def sets_enabled_check(self):
-        while len(self.sets_enabled) != len(self.sets):
-            if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
-            else: self.sets_enabled.append(1)
 
 def main(args):
     pg = PassGen()
