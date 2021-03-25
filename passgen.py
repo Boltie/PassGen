@@ -15,6 +15,7 @@ class PassGen():
         if count: self.count = count
         if length: self.length = length
         if sets_enabled: self.sets_enabled = sets_enabled
+        self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
         self.sets_enabled_check()
 
     def get_single(self):
@@ -52,7 +53,6 @@ class PassGen():
         return passwords
 
     def sets_enabled_check(self):
-        self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
         while len(self.sets_enabled) != len(self.sets):
             if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
             else: self.sets_enabled.append(1)
