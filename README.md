@@ -8,11 +8,9 @@ For example, if you request a 4-digit password with all 4 sets enabled, you will
 Characters are never repeated.
 
 You can initialise the `PassGen()` class and use the:\
-  `get_single()` method to return a single string
-  
-  `get_multiple(count=None)` method to return an array of strings.\
-  The method defaults to using the stored objects count value.\
-  If you provide a count, it will also update the objects count value.
+* `get_single()` method to return a single string.
+
+* `get_multiple(count=None)` method to return an array of strings. This method defaults to using the stored objects count value. If you provide a count, it will also update the objects count value.
 
 You can execute `passgen.py` and provide arguments for the count, length and character sets. The password strings will then be printed to the console/terminal.
 
