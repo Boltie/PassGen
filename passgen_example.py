@@ -5,7 +5,7 @@ pg = PassGen(count=2, length=18, sets_enabled="110")
 
 """ Before generating a password, a check is made on 'sets_enabled' whereby
     if there are insufficient/too many values, it will be padded/trimmed.
-    The value of '100' will be padded to '1101'. """
+    The value of '110' will be padded to '1101'. """
 
 # 1
 pw = pg.get_single()
