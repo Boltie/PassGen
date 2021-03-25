@@ -17,7 +17,9 @@ class PassGen():
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
 
-    def get_single(self):
+    def get_single(self, length=None, sets_enabled=None):
+        if length: self.length = length
+        if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         while len(self.sets_enabled) != len(self.sets):
             if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
             else: self.sets_enabled.append(1)
@@ -45,9 +47,11 @@ class PassGen():
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password
 
-    def get_multiple(self, count=None):
+    def get_multiple(self, count=None, length=None, sets_enabled=None):
         passwords = []
         if count: self.count = count
+        if length: self.length = length
+        if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         for i in range(self.count):
             passwords.append(self.get_single())
             if passwords[i].startswith("Failed - "): break
