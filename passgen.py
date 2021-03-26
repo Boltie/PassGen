@@ -14,9 +14,10 @@ class PassGen():
                 [char for char in string.punctuation]   ]
     sets_enabled = [1 for i in range(len(sets))]
 
-    def __init__(self, allow_repeats=None, count=None, length=None, sets_enabled=None):
-        if allow_repeats: self.allow_repeats = allow_repeats
+    def __init__(self, allow_repeats=None, count=None, entropy=None, length=None, sets_enabled=None):
+        if allow_repeats is not None: self.allow_repeats = allow_repeats
         if count: self.count = count
+        if entropy is not None: self.entropy = entropy
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
