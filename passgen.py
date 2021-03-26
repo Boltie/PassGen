@@ -58,7 +58,7 @@ class PassGen():
                     if (self.allow_repeats or not(password.endswith(next_char))): found = True
                 password += next_char
             entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1)
-            entropy += self.get_entropy(self.get_char_count(), entropy_remain)
+            entropy += self.get_entropy(self.get_char_count(), (entropy_remain if entropy_remain > 0 else 0))
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password + (" E=" + str(entropy) if self.entropy else "")
 
