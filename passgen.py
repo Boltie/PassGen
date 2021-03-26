@@ -60,7 +60,7 @@ class PassGen():
             entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1)
             entropy += self.get_entropy(self.get_char_count(), (entropy_remain if entropy_remain > 0 else 0))
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
-        return password + (" E=" + str(entropy) if self.entropy else "")
+        return password + (" E=" + str(round(entropy, 2)) if self.entropy else "")
 
     def get_multiple(self, allow_repeats=None, count=None, entropy=None, length=None, sets_enabled=None):
         passwords = []
