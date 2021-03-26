@@ -26,7 +26,7 @@ class PassGen():
 
     def get_single(self, allow_repeats=None, entropy=None, length=None, sets_enabled=None):
         if allow_repeats is not None: self.allow_repeats = allow_repeats
-        if entropy: self.entropy = entropy
+        if entropy is not None: self.entropy = entropy
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         while len(self.sets_enabled) != len(self.sets):
@@ -65,7 +65,7 @@ class PassGen():
     def get_multiple(self, allow_repeats=None, count=None, entropy=None, length=None, sets_enabled=None):
         passwords = []
         if allow_repeats is not None: self.allow_repeats = allow_repeats
-        if entropy: self.entropy = entropy
+        if entropy is not None: self.entropy = entropy
         if count: self.count = count
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
