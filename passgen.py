@@ -37,7 +37,7 @@ class PassGen():
         password = ""
         sets_allowed = []
         sets_required = []
-        if self.sets_enabled[:len(self.sets)].count(1) > 0:
+        if self.sets_enabled[:].count(1) > 0:
             for i in range(len(self.sets)):
                 if self.sets_enabled[i] == 1:
                     sets_allowed.append(i)
@@ -58,10 +58,11 @@ class PassGen():
                     next_char = self.sets[charset][char_idx]
                     if (self.allow_repeats or not(password.endswith(next_char))): found = True
                 password += next_char
-            entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1)
+            entropy_remain = self.length - self.sets_enabled[:].count(1)
             entropy += self.get_entropy(self.get_char_count(), (entropy_remain if entropy_remain > 0 else 0))
+            password += (" E=" + str(round(entropy, 2)) if self.entropy else "")
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
-        return password + (" E=" + str(round(entropy, 2)) if self.entropy else "")
+        return password
 
     def get_multiple(self, allow_repeats=None, count=None, entropy=None, length=None, sets_enabled=None):
         passwords = []
