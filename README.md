@@ -2,7 +2,7 @@
 A Python password generator class that accepts parameters for the count, length, character sets and whether to accept repeating characters.
 It defaults to providing a single 16-digit string utilising the lower, upper, digit and punctuation character sets with no repeating characters.
 
-All enabled character sets are utilised at least once before being reused. If you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character.
+All enabled character sets are utilised at least once before being reused. If you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character present.
 
 You can initialise the `PassGen()` class and use the:
 * `get_single()` method to return a single string.
