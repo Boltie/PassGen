@@ -1,7 +1,7 @@
 from passgen import PassGen
 
 # Assign a new PassGen object to 'pg' using parameters.
-pg = PassGen(allow_repeats=True, count=2, length=18, sets_enabled="110")
+pg = PassGen(allow_repeats=True, count=2, entropy=False, length=18, sets_enabled="110")
 
 """ Before generating a password, a check is made on 'sets_enabled' whereby
     if there are insufficient/too many values, it will be padded/trimmed.
