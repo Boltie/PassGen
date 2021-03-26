@@ -33,5 +33,5 @@ pw = pg.get_multiple(length=8, sets_enabled="00") # The provided 'sets_enabled' 
 for s in pw: print("6 - " + s) # 2 8-digit passwords printed to console/terminal. Repeating chars NOT allowed. Only numbers and punctuation used.
 
 #7
-pw = pg.get_single(True, 24) # Generate password providing a length of 24.
+pw = pg.get_single(True, 24) # Generate password providing a length of 24 and also print the entropy value.
 print("7 - " + pw) # 1 24-digit password printed to console/terminal. Repeating chars allowed. Only numbers and punctuation used.
