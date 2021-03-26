@@ -6,7 +6,7 @@ import sys
 class PassGen():
     allow_repeats = False
     count = 1
-    entropy = 0
+    entropy = False
     length = 16
     sets =  [   [char for char in string.ascii_letters[:26]],
                 [char for char in string.ascii_letters[26:]],
@@ -24,14 +24,14 @@ class PassGen():
     def get_entropy(self, char_count, length):
         return math.log(pow(char_count, length), 2)
 
-    def get_single(self, allow_repeats=None, length=None, sets_enabled=None):
+    def get_single(self, allow_repeats=None, entropy=None, length=None, sets_enabled=None):
         if allow_repeats: self.allow_repeats = allow_repeats
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         while len(self.sets_enabled) != len(self.sets):
             if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
             else: self.sets_enabled.append(1)
-        self.entropy = 0
+        entropy = 0
         password = ""
         sets_allowed = []
         sets_required = []
@@ -47,7 +47,7 @@ class PassGen():
                     if i > 0:
                         char_count = 0
                         for s in sets_required: char_count += self.set_lengths[s]
-                        self.entropy += self.get_entropy(char_count, 1)
+                        entropy += self.get_entropy(char_count, 1)
                     sets_required.pop(idx)
                 else:
                     charset = random.choice(sets_allowed)
@@ -58,9 +58,9 @@ class PassGen():
                     if (self.allow_repeats or not(password.endswith(next_char))): found = True
                 password += next_char
             entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1) + 1
-            self.entropy += self.get_entropy(self.get_char_count(), entropy_remain)
+            entropy += self.get_entropy(self.get_char_count(), entropy_remain)
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
-        return password
+        return password + (" E=" + str(entropy) if self.entropy else "")
 
     def get_multiple(self, allow_repeats=None, count=None, length=None, sets_enabled=None):
         passwords = []
@@ -83,14 +83,13 @@ class PassGen():
 
 def main(args):
     pg = PassGen()
-    entropy = False
     for i in range(len(args)):
         if args[i] == "-c": pg.count = int(args[i+1])
-        elif args[i] == "-e": entropy = True
+        elif args[i] == "-e": pg.entropy = True
         elif args[i] == "-l": pg.length = int(args[i+1])
         elif args[i] == "-r": pg.allow_repeats = True
         elif args[i] == "-s": pg.sets_enabled = [int(char) for char in args[i+1]]
-    for s in pg.get_multiple(): print(s + (" E=" + str(pg.entropy) if entropy else ""))
+    for s in pg.get_multiple(): print(s)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
