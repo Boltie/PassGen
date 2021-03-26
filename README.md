@@ -32,7 +32,7 @@ The below will generate a single, 10-digit password utilising the punctuation ch
 `python passgen.py -l 10 -s 0001`
   
 The below will generate 100, 16-digit passwords utilising the digit character set. Repeating characters allowed.\
-`python passgen.py -ar -c 100 -s 0010`
+`python passgen.py -r -c 100 -s 0010`
   
 The below will generate 10, 8-digit passwords utilising the lower and upper character sets.\
 `python passgen.py -c 10 -l 8 -s 1100`
