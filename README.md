@@ -20,7 +20,7 @@ You can execute `passgen.py` and provide arguments for the count, length, charac
 
 `-l [int]` Provide an integer to denote the length of generated passwords.
 
-`-r` Denotes repeating characters allowed. No need to provide anything else.
+`-r` Denotes repeating characters allowed.
 
 `-s [string]` Provide a string containing only 0's or 1's to flag which sets to utilise. Set order = lower/upper/digit/punctuation. By default, all sets are enabled (e.g. `-s 1111`).
 
