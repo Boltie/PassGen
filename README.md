@@ -16,7 +16,7 @@ You can execute `passgen.py` and provide arguments for the count, length, charac
 # Console/Terminal Arguments
 `-c [int]` Provide an integer to denote the number of passwords you would like returned.
 
-`-e` Denotes that the calculated entropy of the generated password should also be printed.
+`-e` Denotes that the calculated entropy of the password should also be printed.
 
 `-l [int]` Provide an integer to denote the length of generated passwords.
 
