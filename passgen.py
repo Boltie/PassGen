@@ -44,10 +44,9 @@ class PassGen():
                 if len(sets_required) != 0:
                     idx = random.randrange(0, len(sets_required))
                     charset = sets_required[idx]
-                    if i > 0:
-                        char_count = 0
-                        for s in sets_required: char_count += self.set_lengths[s]
-                        entropy += self.get_entropy(char_count, 1)
+                    char_count = 0
+                    for s in sets_required: char_count += self.set_lengths[s]
+                    entropy += self.get_entropy(char_count, 1)
                     sets_required.pop(idx)
                 else:
                     charset = random.choice(sets_allowed)
@@ -57,7 +56,7 @@ class PassGen():
                     next_char = self.sets[charset][char_idx]
                     if (self.allow_repeats or not(password.endswith(next_char))): found = True
                 password += next_char
-            entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1) + 1
+            entropy_remain = self.length - self.sets_enabled[:len(self.sets)].count(1)
             entropy += self.get_entropy(self.get_char_count(), entropy_remain)
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password + (" E=" + str(entropy) if self.entropy else "")
