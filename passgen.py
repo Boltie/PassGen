@@ -3,6 +3,7 @@ import string
 import sys
 
 class PassGen():
+    allow_dupes = False
     count = 1
     length = 16
     sets =  [   [char for char in string.ascii_letters[:26]],
@@ -11,13 +12,15 @@ class PassGen():
                 [char for char in string.punctuation]   ]
     sets_enabled = [1 for i in range(len(sets))]
 
-    def __init__(self, count=None, length=None, sets_enabled=None):
+    def __init__(self, allow_dupes=None, count=None, length=None, sets_enabled=None):
+        if allow_dupes: self.allow_dupes = allow_dupes
         if count: self.count = count
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
 
-    def get_single(self, length=None, sets_enabled=None):
+    def get_single(self, allow_dupes=None, length=None, sets_enabled=None):
+        if allow_dupes: self.allow_dupes = allow_dupes
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
         while len(self.sets_enabled) != len(self.sets):
@@ -42,13 +45,14 @@ class PassGen():
                 while not(found):
                     char_idx = random.randrange(0, self.set_lengths[charset])
                     next_char = self.sets[charset][char_idx]
-                    if not(password.endswith(next_char)): found = True
+                    if (self.allow_dupes or not(password.endswith(next_char))): found = True
                 password += next_char
         else: password = "Failed - All character sets were disabled. " + "".join(str(i) for i in self.sets_enabled)
         return password
 
-    def get_multiple(self, count=None, length=None, sets_enabled=None):
+    def get_multiple(self, allow_dupes=None, count=None, length=None, sets_enabled=None):
         passwords = []
+        if allow_dupes: self.allow_dupes = allow_dupes
         if count: self.count = count
         if length: self.length = length
         if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
@@ -60,7 +64,8 @@ class PassGen():
 def main(args):
     pg = PassGen()
     for i in range(len(args)):
-        if args[i] == "-c": pg.count = int(args[i+1])
+        if args[i] == "-ad": pg.allow_dupes = True
+        elif args[i] == "-c": pg.count = int(args[i+1])
         elif args[i] == "-l": pg.length = int(args[i+1])
         elif args[i] == "-s": pg.sets_enabled = [int(char) for char in args[i+1]]
     for i in pg.get_multiple(): print(i)
