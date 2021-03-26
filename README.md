@@ -14,11 +14,13 @@ These methods default to using the stored object values. If you provide any of t
 You can execute `passgen.py` and provide arguments for the count, length, character sets and whether to accept repeating characters. The password strings will then be printed to the console/terminal.
 
 # Console/Terminal Arguments
-`-ar` Denotes repeating characters allowed. No need to provide anything else.
-
 `-c [int]` Provide an integer to denote the number of passwords you would like returned.
 
+`-e` Denotes that the calculated entropy of the generated password should also be printed.
+
 `-l [int]` Provide an integer to denote the length of generated passwords.
+
+`-r` Denotes repeating characters allowed. No need to provide anything else.
 
 `-s [string]` Provide a string containing only 0's or 1's to flag which sets to utilise. Set order = lower/upper/digit/punctuation. By default, all sets are enabled (e.g. `-s 1111`).
 
@@ -34,3 +36,6 @@ The below will generate 100, 16-digit passwords utilising the digit character se
   
 The below will generate 10, 8-digit passwords utilising the lower and upper character sets.\
 `python passgen.py -c 10 -l 8 -s 1100`
+
+# Entropy
+Entropy calculations still need to be thought about. I have implemented a quick implementation that I believe is close to what is required. There is still some work to do around the first few characters of the password that don't get to select from the same pool of characters as those that come after all character sets have been used once.
