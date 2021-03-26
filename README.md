@@ -5,20 +5,22 @@ It defaults to providing a single 16-digit string utilising the lower, upper, di
 All enabled character sets are utilised at least once before being reused. If you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character.
 
 You can initialise the `PassGen()` class and use the:
-* `get_single()` method to return a single string.
+* `get_single(allow_repeats=None, length=None, sets_enabled=None)` method to return a single string.
 
-* `get_multiple(count=None)` method to return an array of strings. This method defaults to using the stored objects count value. If you provide a count, it will also update the objects count value.
+* `get_multiple(allow_repeats=False, count=None, length=None, sets_enabled=None)` method to return an array of strings.
 
-You can execute `passgen.py` and provide arguments for the count, length and character sets. The password strings will then be printed to the console/terminal.
+These methods default to using the stored object values. If you provide any of the parameters, the corresponding object value will also be updated.
+
+You can execute `passgen.py` and provide arguments for the count, length, character sets and whether to accept repeating characters. The password strings will then be printed to the console/terminal.
 
 # Console/Terminal Arguments
-`-ar`Denotes repeating characters allowed. No need to provide anything ekse.
+`-ar` Denotes repeating characters allowed. No need to provide anything ekse.
 
-`-c` Provide an integer to denote the number of passwords you would like returned.
+`-c [int]` Provide an integer to denote the number of passwords you would like returned.
 
-`-l` Provide an integer to denote the length of generated passwords.
+`-l [int]` Provide an integer to denote the length of generated passwords.
 
-`-s` Provide a string containing only 0's or 1's to flag which sets to utilise. Set order = lower/upper/digit/punctuation. By default, all sets are enabled (e.g. `-s 1111`).
+`-s [string]` Provide a string containing only 0's or 1's to flag which sets to utilise. Set order = lower/upper/digit/punctuation. By default, all sets are enabled (e.g. `-s 1111`).
 
 # Example Console/Terminal Commands
 The below will generate by default a single, 16-digit password utilising all character sets.\
