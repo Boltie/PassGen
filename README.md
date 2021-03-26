@@ -38,4 +38,4 @@ The below will generate 10, 8-digit passwords utilising the lower and upper char
 `python passgen.py -c 10 -l 8 -s 1100`
 
 # Entropy
-Entropy calculations still need to be thought about. I have implemented a quick implementation that I believe is close to what is required. There is still some work to do around the first few characters of the password that don't get to select from the same pool of characters as those that come after all character sets have been used once.
+Entropy calculations still need to be thought about. I have quickly implemented something that I believe is close to what is required. There is still some work to do around the first few characters of the password that don't get to select from the same pool of characters as those that come after all character sets have been used once.
