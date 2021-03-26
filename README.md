@@ -5,9 +5,9 @@ It defaults to providing a single 16-digit string utilising the lower, upper, di
 All enabled character sets are utilised at least once before being reused. If you request a 4-digit password with all 4 sets enabled, you will not receive multiple characters from any single character set. It will always return a string with a lower, upper, digit and punctuation character.
 
 You can initialise the `PassGen()` class and use the:
-* `get_single(allow_repeats=None, length=None, sets_enabled=None)` method to return a single string.
+* `get_single()` method to return a single string.
 
-* `get_multiple(allow_repeats=None, count=None, length=None, sets_enabled=None)` method to return an array of strings.
+* `get_multiple()` method to return an array of strings.
 
 These methods default to using the stored object values. If you provide any of the parameters, the corresponding object value will also be updated.
 
