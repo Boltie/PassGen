@@ -14,7 +14,7 @@ These methods default to using the stored object values. If you provide any of t
 You can execute `passgen.py` and provide arguments for the count, length, character sets and whether to accept repeating characters. The password strings will then be printed to the console/terminal.
 
 # Console/Terminal Arguments
-`-ar` Denotes repeating characters allowed. No need to provide anything ekse.
+`-ar` Denotes repeating characters allowed. No need to provide anything else.
 
 `-c [int]` Provide an integer to denote the number of passwords you would like returned.
 
