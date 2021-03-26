@@ -7,7 +7,7 @@ All enabled character sets are utilised at least once before being reused. If yo
 You can initialise the `PassGen()` class and use the:
 * `get_single(allow_repeats=None, length=None, sets_enabled=None)` method to return a single string.
 
-* `get_multiple(allow_repeats=False, count=None, length=None, sets_enabled=None)` method to return an array of strings.
+* `get_multiple(allow_repeats=None, count=None, length=None, sets_enabled=None)` method to return an array of strings.
 
 These methods default to using the stored object values. If you provide any of the parameters, the corresponding object value will also be updated.
 
