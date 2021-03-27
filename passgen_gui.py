@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import ttk
 
 def generate(args=None):
-    global length
     if length.get() != "":
         enabled = ""
         enabled += ("1" if lower.get() else "0")
