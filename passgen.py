@@ -16,10 +16,10 @@ class PassGen():
 
     def __init__(self, allow_repeats=None, count=None, entropy=None, length=None, sets_enabled=None):
         if allow_repeats is not None: self.allow_repeats = allow_repeats
-        if count: self.count = count
+        if count is not None: self.count = count
         if entropy is not None: self.entropy = entropy
-        if length: self.length = length
-        if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
+        if length is not None: self.length = length
+        if sets_enabled is not None: self.sets_enabled = [int(char) for char in sets_enabled]
         self.set_lengths = [len(self.sets[i]) for i in range(0, len(self.sets))]
     
     def get_entropy(self, char_count, length):
@@ -28,8 +28,8 @@ class PassGen():
     def get_single(self, allow_repeats=None, entropy=None, length=None, sets_enabled=None):
         if allow_repeats is not None: self.allow_repeats = allow_repeats
         if entropy is not None: self.entropy = entropy
-        if length: self.length = length
-        if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
+        if length is not None: self.length = length
+        if sets_enabled is not None: self.sets_enabled = [int(char) for char in sets_enabled]
         while len(self.sets_enabled) != len(self.sets):
             if len(self.sets_enabled) > len(self.sets): self.sets_enabled.pop()
             else: self.sets_enabled.append(1)
@@ -68,9 +68,9 @@ class PassGen():
         passwords = []
         if allow_repeats is not None: self.allow_repeats = allow_repeats
         if entropy is not None: self.entropy = entropy
-        if count: self.count = count
-        if length: self.length = length
-        if sets_enabled: self.sets_enabled = [int(char) for char in sets_enabled]
+        if count is not None: self.count = count
+        if length is not None: self.length = length
+        if sets_enabled is not None: self.sets_enabled = [int(char) for char in sets_enabled]
         for i in range(self.count):
             passwords.append(self.get_single())
             if passwords[i].startswith("Failed - "): break
